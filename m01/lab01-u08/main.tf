@@ -14,9 +14,16 @@ provider "azurerm" {
   skip_provider_registration = true
 }
 
+variable "rg_name" {
+  type    = string
+  default = "ContosoResourceGroup"
+}
+
 
 module "rgs" {
   source = "./modules/rgs"
+
+  rg_name = var.rg_name
 }
 
 module "network" {
